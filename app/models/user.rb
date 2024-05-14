@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :user_rooms
   has_many :chats
   has_many :rooms, through: :user_rooms
-  
+  has_many :read_counts,dependent: :destroy
   # 自分がフォローされる（被フォロー）側の関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   # 被フォロー関係を通じて参照→自分をフォローしている人
